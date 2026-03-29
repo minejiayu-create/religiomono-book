@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Одновіра · Religiomono</title>
+<meta name="description" content="Духовність без страху. Питання без догм. Це життя — єдине, що маємо напевно.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #1A5C2A; --green-mid: #2E8B47; --green-light: #C8E8C0; --green-pale: #F0F7ED;
+  --blue: #1A4E6E; --blue-mid: #2E7DAE; --blue-light: #B8D9EE; --blue-pale: #EDF5FB;
+  --red: #A32D2D; --black: #141414; --cream: #FAF8F4; --text: #1A1A1A; --muted: #6B6B6B;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2.5rem; background: rgba(250,248,244,0.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid rgba(26,92,42,0.12); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-brand { display: flex; flex-direction: column; }
+.nav-uk { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--text); line-height: 1.1; }
+.nav-en { font-size: 10px; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+.lang-sw { font-size: 12px; font-weight: 500; padding: 4px 12px; border: 0.5px solid var(--green-light); border-radius: 20px; background: transparent; color: var(--green); cursor: pointer; }
+.lang-sw:hover { background: var(--green-pale); }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 2.5rem 4rem; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(200,232,192,0.3) 0%, transparent 70%); }
+.hero-spiral { position: absolute; right: -60px; top: 50%; transform: translateY(-50%); opacity: 0.06; pointer-events: none; }
+.hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(48px, 8vw, 88px); font-weight: 300; line-height: 1.05; color: var(--text); max-width: 700px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+.hero-title em { font-style: italic; color: var(--green); }
+.hero-sub { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 480px; margin-top: 1.75rem; opacity: 0; animation: fadeUp 0.9s 0.6s forwards; }
+.hero-cta { margin-top: 2.5rem; display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s 0.8s forwards; }
+.btn-primary { padding: 12px 28px; font-size: 14px; font-weight: 500; background: var(--green); color: #F0F7ED; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: var(--green-mid); }
+.btn-ghost { padding: 12px 28px; font-size: 14px; font-weight: 400; background: transparent; color: var(--green); border: 0.5px solid var(--green-light); border-radius: 4px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+.btn-ghost:hover { background: var(--green-pale); }
+
+/* MANIFEST */
+.manifest-section { padding: 6rem 2.5rem; border-top: 0.5px solid rgba(26,92,42,0.1); max-width: 860px; margin: 0 auto; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 2.5rem; }
+.manifest-block { border-left: 2px solid var(--green); padding-left: 2rem; }
+.manifest-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; line-height: 1.2; color: var(--text); margin-bottom: 2rem; }
+.manifest-headline em { font-style: italic; color: var(--green); }
+.manifest-body p { font-size: 16px; color: var(--muted); line-height: 1.9; margin-bottom: 1.1rem; }
+.manifest-body p:last-child { margin-bottom: 0; }
+.manifest-closing { margin-top: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--green); }
+
+/* FAQ */
+.faq-section { padding: 6rem 2.5rem; background: var(--blue-pale); border-top: 0.5px solid var(--blue-light); }
+.faq-inner { max-width: 720px; margin: 0 auto; }
+.faq-section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: var(--text); margin-bottom: 2rem; }
+.faq-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+.filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.filter-btn { padding: 4px 12px; font-size: 12px; font-weight: 500; border-radius: 20px; border: 0.5px solid var(--blue-light); background: transparent; color: var(--blue-mid); cursor: pointer; transition: all 0.15s; }
+.filter-btn.active { background: white; color: var(--blue); border-color: var(--blue); }
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item { border: 0.5px solid rgba(46,125,174,0.2); border-left: 2px solid transparent; border-radius: 8px; background: #fff; overflow: hidden; transition: border-color 0.15s; }
+.faq-item.open { border-left-color: var(--blue); }
+.faq-q { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 1.1rem 1.25rem; cursor: pointer; }
+.faq-q-text { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.5; flex: 1; transition: color 0.15s; }
+.faq-item.open .faq-q-text { color: var(--blue); }
+.faq-tag { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.tag-faith  { background: var(--green-pale); color: var(--green); }
+.tag-ritual { background: var(--blue-pale); color: var(--blue); }
+.tag-life   { background: #FAF3E8; color: #7A4A0A; }
+.tag-gender { background: #FBEAF0; color: #72243E; }
+.faq-arrow { font-size: 13px; color: var(--muted); flex-shrink: 0; transition: transform 0.2s, color 0.15s; margin-top: 3px; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--blue); }
+.faq-a { display: none; padding: 0 1.25rem 1.1rem; }
+.faq-item.open .faq-a { display: block; }
+.faq-a-text { font-size: 14px; color: var(--muted); line-height: 1.85; border-top: 0.5px solid rgba(46,125,174,0.15); padding-top: 1rem; }
+
+/* SOCIAL */
+.social-section { padding: 6rem 2.5rem; border-top: 0.5px solid rgba(26,92,42,0.1); max-width: 860px; margin: 0 auto; }
+.social-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,4vw,42px); font-weight: 300; color: var(--text); margin-bottom: 0.5rem; }
+.social-sub { font-size: 15px; color: var(--muted); margin-bottom: 2rem; }
+.social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.social-card { display: flex; align-items: center; gap: 14px; padding: 1.1rem 1.25rem; border: 0.5px solid rgba(26,92,42,0.15); border-radius: 8px; background: #fff; text-decoration: none; color: var(--text); transition: border-color 0.2s, background 0.2s; }
+.social-card:hover { border-color: var(--green-light); background: var(--green-pale); }
+.social-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.social-name { font-size: 14px; font-weight: 500; }
+.social-handle { font-size: 12px; color: var(--muted); }
+
+/* FOOTER */
+footer { padding: 2rem 2.5rem; border-top: 0.5px solid rgba(26,92,42,0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: var(--cream); }
+.footer-logo { display: flex; align-items: center; gap: 8px; }
+.footer-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 500; color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 640px) {
+  nav { padding: 1rem 1.25rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { display: none; }
+  .hero { padding: 7rem 1.25rem 3rem; }
+  .manifest-section, .social-section { padding: 4rem 1.25rem; }
+  .faq-section { padding: 4rem 1.25rem; }
+  footer { padding: 1.5rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="13" r="5.5" stroke="#1A5C2A" stroke-width="1.2" fill="none"/>
+      <line x1="14" y1="7" x2="14" y2="5" stroke="#1A5C2A" stroke-width="1"/>
+      <line x1="14" y1="19" x2="14" y2="21" stroke="#1A5C2A" stroke-width="1"/>
+      <line x1="8.5" y1="13" x2="6.5" y2="13" stroke="#1A5C2A" stroke-width="1"/>
+      <line x1="19.5" y1="13" x2="21.5" y2="13" stroke="#1A5C2A" stroke-width="1"/>
+      <ellipse cx="14" cy="13" rx="3" ry="5.5" stroke="#1A5C2A" stroke-width="1" fill="none"/>
+      <path d="M10 22 Q14 25 18 22" stroke="#1A5C2A" stroke-width="1" fill="none"/>
+    </svg>
+    <div class="nav-brand">
+      <span class="nav-uk" id="nav-brand-uk">Одновіра</span>
+      <span class="nav-en">Religiomono</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#manifest" id="nav-manifest">Маніфест</a>
+    <a href="#faq" id="nav-faq">FAQ</a>
+    <a href="#social" id="nav-social">Ми онлайн</a>
+    <button class="lang-sw" onclick="setLang(document.documentElement.lang==='uk'?'en':'uk')" id="lang-sw">EN</button>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-spiral" width="500" height="500" viewBox="0 0 500 500">
+    <path d="M250 250 C250 250 320 250 320 180 C320 110 250 110 250 180 C250 215 278 230 290 220" stroke="#1A5C2A" stroke-width="28" fill="none" stroke-linecap="round"/>
+  </svg>
+  <div class="hero-eyebrow" id="hero-eyebrow">Одновіра · Religiomono</div>
+  <h1 class="hero-title" id="hero-title">Живи<br><em>зараз.</em></h1>
+  <p class="hero-sub" id="hero-sub">Духовність без страху. Питання без догм. Це життя — єдине, що маємо напевно.</p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="#manifest" id="hero-btn1">Читати маніфест</a>
+    <a class="btn-ghost" href="#faq" id="hero-btn2">Часті питання</a>
+  </div>
+</section>
+
+<section class="manifest-section" id="manifest">
+  <div class="section-label" id="manifest-label">Маніфест</div>
+  <div class="manifest-block">
+    <h2 class="manifest-headline" id="manifest-headline">Це життя —<br><em>єдине, що маємо напевно.</em></h2>
+    <div class="manifest-body" id="manifest-body"></div>
+    <div class="manifest-closing" id="manifest-closing">Живи зараз.</div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="faq-label" id="faq-label">Часті запитання</div>
+    <h2 class="faq-section-title" id="faq-subtitle">Питання, що хвилюють.</h2>
+    <div class="filter-row" id="filter-row"></div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<section class="social-section" id="social">
+  <div class="section-label" id="social-label">Ми онлайн</div>
+  <h2 class="social-title" id="social-title">Приєднуйтесь до розмови</h2>
+  <p class="social-sub" id="social-sub">Питання, думки, сумніви — все це живе тут.</p>
+  <div class="social-grid">
+    <a class="social-card" href="#">
+      <div class="social-icon" style="background:#E8F4FD;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" stroke="#1A4E6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div><div class="social-name">Twitter / X</div><div class="social-handle">@religiomono</div></div>
+    </a>
+    <a class="social-card" href="#">
+      <div class="social-icon" style="background:#F0F7ED;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#1A5C2A" stroke-width="1.5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="#1A5C2A" stroke-width="1.5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#1A5C2A" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div><div class="social-name">Instagram</div><div class="social-handle">@religiomono</div></div>
+    </a>
+    <a class="social-card" href="#">
+      <div class="social-icon" style="background:#EDF5FB;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 2H3v16h5v4l4-4h9V2z" stroke="#1A4E6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div><div class="social-name">Telegram</div><div class="social-handle">@religiomono</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="13" r="5.5" stroke="#1A5C2A" stroke-width="1.2" fill="none"/>
+      <line x1="14" y1="7" x2="14" y2="5" stroke="#1A5C2A" stroke-width="1"/>
+      <line x1="14" y1="19" x2="14" y2="21" stroke="#1A5C2A" stroke-width="1"/>
+      <line x1="8.5" y1="13" x2="6.5" y2="13" stroke="#1A5C2A" stroke-width="1"/>
+      <line x1="19.5" y1="13" x2="21.5" y2="13" stroke="#1A5C2A" stroke-width="1"/>
+      <ellipse cx="14" cy="13" rx="3" ry="5.5" stroke="#1A5C2A" stroke-width="1" fill="none"/>
+      <path d="M10 22 Q14 25 18 22" stroke="#1A5C2A" stroke-width="1" fill="none"/>
+    </svg>
+    <span class="footer-name">Одновіра · Religiomono</span>
+  </div>
+  <div class="footer-copy" id="footer-copy">© 2026 Одновіра. Живи зараз.</div>
+</footer>
+
+<script>
+const T = {
+  uk: {
+    navBrand:'Одновіра', navManifest:'Маніфест', navFaq:'FAQ', navSocial:'Ми онлайн', langSw:'EN',
+    heroEyebrow:'Одновіра · Religiomono', heroTitle:'Живи<br><em>зараз.</em>',
+    heroSub:'Духовність без страху. Питання без догм. Це життя — єдине, що маємо напевно.',
+    heroBtn1:'Читати маніфест', heroBtn2:'Часті питання',
+    manifestLabel:'Маніфест', manifestHeadline:'Це життя —<br><em>єдине, що маємо напевно.</em>',
+    manifestBody:['Рай може існувати. Реінкарнація — можливо. Але тільки одне відомо точно: ти живеш зараз.','Ми не проти релігій. Ми проти того, щоб відкладати своє життя заради обіцянок, які ніхто не може підтвердити.','Страждання — не кара і не іспит. Це сигнал. Щастя — не винагорода після смерті. Це те, що можна будувати сьогодні.','Одновіра — це не нова догма. Це дозвіл питати, сумніватися і жити повністю — прямо зараз.'],
+    manifestClosing:'Живи зараз.',
+    faqLabel:'Часті запитання', faqSubtitle:'Питання, що хвилюють.',
+    all:'Всі', tags:{faith:'Про нас',ritual:'Ритуали',life:'Сенс',gender:'Гендер'},
+    socialLabel:'Ми онлайн', socialTitle:'Приєднуйтесь до розмови', socialSub:'Питання, думки, сумніви — все це живе тут.',
+    footerCopy:'© 2026 Одновіра. Живи зараз.',
+    faqs:[
+      {q:'Чому жінки не керують церквами?',tag:'gender',a:'Бо так вирішили чоловіки — дві тисячі років тому. Більшість релігійних структур будувалися в патріархальні часи, і ці правила просто ніхто не наважився переписати. Одновіра ставить під сумнів: якщо бог для всіх — чому голос має лише половина людства?'},
+      {q:'Чому в релігіях обов\'язково ходити в церкву, якщо бог усюди?',tag:'ritual',a:'Церква як інституція потребує вашої присутності більше, ніж бог. Якщо вища сила дійсно всюди — в лісі, на кухні, у розмові з другом — то будь-яке місце священне.'},
+      {q:'Чому це життя найголовніше?',tag:'life',a:'Тому що це єдине, яке ви знаєте напевно. Рай, реінкарнація, нірвана — красиві ідеї, але жодних доказів. Чекати на «потім» означає програти «зараз».'},
+      {q:'Як мінімізувати страждання у повсякденному житті?',tag:'life',a:'Більшість страждань виникає не від подій, а від опору до них. Прийняти незмінне, змінити змінне, відрізнити одне від одного — ось практична основа Одновіри.'},
+      {q:'Одновіра — це нова релігія?',tag:'faith',a:'Ні — і так. Не нова догма, а новий підхід. Ми пропонуємо спосіб думати про духовність без страху, провини і посередників.'},
+      {q:'Чи потрібно відмовлятися від своєї релігії?',tag:'faith',a:'Зовсім ні. Одновіра — не конкурент вашій вірі, а запрошення до її глибшого розуміння.'},
+      {q:'Чи є у Одновіри ритуали або практики?',tag:'ritual',a:'Є — але жоден з них не обов\'язковий. Ніяких свічок, які треба запалювати в певний час. Тільки те, що резонує з вами.'},
+      {q:'Для кого Одновіра?',tag:'faith',a:'Для тих, хто хоче жити свідомо — і кому вже не вистачає готових відповідей. Для людей, які відчувають духовну спрагу, але не можуть прийняти догму сліпо.'}
+    ]
+  },
+  en: {
+    navBrand:'Religiomono', navManifest:'Manifesto', navFaq:'FAQ', navSocial:'Find us', langSw:'UA',
+    heroEyebrow:'Religiomono · Одновіра', heroTitle:'Live<br><em>now.</em>',
+    heroSub:'Spirituality without fear. Questions without dogma. This life — the only one we know for certain.',
+    heroBtn1:'Read the manifesto', heroBtn2:'Common questions',
+    manifestLabel:'Manifesto', manifestHeadline:'This life —<br><em>the only one we know for certain.</em>',
+    manifestBody:['Heaven may exist. Reincarnation — perhaps. But only one thing is known for certain: you are alive right now.','We are not against religions. We are against postponing your life for promises no one can confirm.','Suffering is not a punishment or a test. It is a signal. Happiness is not a reward after death. It is something you can build today.','Religiomono is not a new dogma. It is permission to ask, to doubt, and to live fully — right now.'],
+    manifestClosing:'Live now.',
+    faqLabel:'FAQ', faqSubtitle:'Questions that matter.',
+    all:'All', tags:{faith:'About us',ritual:'Rituals',life:'Meaning',gender:'Gender'},
+    socialLabel:'Find us', socialTitle:'Join the conversation', socialSub:'Questions, thoughts, doubts — it all lives here.',
+    footerCopy:'© 2026 Religiomono. Live now.',
+    faqs:[
+      {q:'Why don\'t women lead churches?',tag:'gender',a:'Because men decided that — two thousand years ago. Most religious structures were built in patriarchal times, and no one has dared rewrite the rules since.'},
+      {q:'Why must you go to church if god is everywhere?',tag:'ritual',a:'The church as an institution needs your presence more than god does. If a higher power is truly everywhere — then every place is sacred.'},
+      {q:'Why is this life the most important one?',tag:'life',a:'Because it\'s the only one you know for certain. Heaven, reincarnation, nirvana — beautiful ideas, but zero proof. Waiting for "later" means losing "now".'},
+      {q:'How do I minimize suffering in everyday life?',tag:'life',a:'Most suffering comes not from events but from resisting them. Accept what cannot change, change what can, and learn to tell the difference.'},
+      {q:'Is Religiomono a new religion?',tag:'faith',a:'No — and yes. Not a new dogma, but a new approach. We offer a way to think about spirituality without fear, guilt, or middlemen.'},
+      {q:'Do I have to leave my religion?',tag:'faith',a:'Not at all. Religiomono isn\'t competing with your faith — it\'s an invitation to understand it more deeply.'},
+      {q:'Does Religiomono have rituals or practices?',tag:'ritual',a:'Yes — but none of them are mandatory. No candles that must be lit at a specific time. Only what resonates with you.'},
+      {q:'Who is Religiomono for?',tag:'faith',a:'For those who want to live consciously — and who no longer find ready-made answers sufficient.'}
+    ]
+  }
+};
+
+let lang='uk', activeFilter='all';
+document.documentElement.lang='uk';
+
+function setLang(l){ lang=l; activeFilter='all'; document.documentElement.lang=l; render(); }
+function setFilter(f){ activeFilter=f; renderFaq(); }
+
+function render(){
+  const d=T[lang];
+  document.getElementById('nav-brand-uk').textContent=d.navBrand;
+  document.getElementById('nav-manifest').textContent=d.navManifest;
+  document.getElementById('nav-faq').textContent=d.navFaq;
+  document.getElementById('nav-social').textContent=d.navSocial;
+  document.getElementById('lang-sw').textContent=d.langSw;
+  document.getElementById('hero-eyebrow').textContent=d.heroEyebrow;
+  document.getElementById('hero-title').innerHTML=d.heroTitle;
+  document.getElementById('hero-sub').textContent=d.heroSub;
+  document.getElementById('hero-btn1').textContent=d.heroBtn1;
+  document.getElementById('hero-btn2').textContent=d.heroBtn2;
+  document.getElementById('manifest-label').textContent=d.manifestLabel;
+  document.getElementById('manifest-headline').innerHTML=d.manifestHeadline;
+  document.getElementById('manifest-body').innerHTML=d.manifestBody.map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('manifest-closing').textContent=d.manifestClosing;
+  document.getElementById('faq-label').textContent=d.faqLabel;
+  document.getElementById('faq-subtitle').textContent=d.faqSubtitle;
+  document.getElementById('social-label').textContent=d.socialLabel;
+  document.getElementById('social-title').textContent=d.socialTitle;
+  document.getElementById('social-sub').textContent=d.socialSub;
+  document.getElementById('footer-copy').textContent=d.footerCopy;
+  renderFaq();
+}
+
+function renderFaq(){
+  const d=T[lang];
+  const allTags=['all',...Object.keys(d.tags)];
+  document.getElementById('filter-row').innerHTML=allTags.map(t=>
+    `<button class="filter-btn ${activeFilter===t?'active':''}" onclick="setFilter('${t}')">${t==='all'?d.all:d.tags[t]}</button>`
+  ).join('');
+  const filtered=activeFilter==='all'?d.faqs:d.faqs.filter(f=>f.tag===activeFilter);
+  document.getElementById('faq-list').innerHTML=filtered.map((f,i)=>`
+    <div class="faq-item" id="fi-${i}">
+      <div class="faq-q" onclick="toggle(${i})">
+        <span class="faq-q-text">${f.q}</span>
+        <span class="faq-tag tag-${f.tag}">${d.tags[f.tag]}</span>
+        <span class="faq-arrow">▾</span>
+      </div>
+      <div class="faq-a"><div class="faq-a-text">${f.a}</div></div>
+    </div>`).join('');
+}
+
+function toggle(i){ document.getElementById('fi-'+i).classList.toggle('open'); }
+
+render();
+</script>
+</body>
+</html>
